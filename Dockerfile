@@ -1,9 +1,5 @@
-FROM maven:3.9.9-eclipse-temurin-21
+FROM tomcat:10.1-jdk21
 
-WORKDIR /app
+COPY target/FirstApiApp.war /usr/local/tomcat/webapps/
 
-COPY . .
-
-RUN mvn clean package -DskipTests
-
-CMD ["java","-jar","target/FirstApiApp.war"]
+EXPOSE 8080
